@@ -1,0 +1,9 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+#discount{
+    text-align: center;
+}
+.horizontal-bold{
+    border: 1px solid black; 
+}
