@@ -1,15 +1,17 @@
-
+//total calculation
 function calculation() {
-    const bestP = parseInt(document.getElementById('best-price').innerText);
-    const memory = parseInt(document.getElementById('extra-memory-cost').innerText);
-    const ssd = parseInt(document.getElementById('extra-storage-cost').innerText);
+    const bestPrice = parseInt(document.getElementById('best-price').innerText);
+    const memoryPrice = parseInt(document.getElementById('extra-memory-cost').innerText);
+    const ssdPrice = parseInt(document.getElementById('extra-storage-cost').innerText);
     const deliverCharge = parseInt(document.getElementById('delivery-charge').innerText);
-    document.getElementById('total-price').innerText = bestP + memory + ssd + deliverCharge;
+    // check total balance 
 
-    document.getElementById("discount-price").innerText = bestP + memory + ssd + deliverCharge;;
+    document.getElementById('total-price').innerText = bestPrice + memoryPrice + ssdPrice + deliverCharge;
+    // check balance with coupon
+    document.getElementById("discount-price").innerText = bestPrice + memoryPrice + ssdPrice + deliverCharge;;
 
 }
-
+//Memory
 function getMemory(isIncreasing) {
     const extraCostText = document.getElementById("extra-memory-cost");
     let extraCost = parseInt(extraCostText.innerText);
@@ -23,11 +25,7 @@ function getMemory(isIncreasing) {
     return extraCost;
 }
 
-// function memory(ssdText) {
-//     const extraStorageText = document.getElementById(ssdText);
-//     const extraStorage = extraStorageText.innerText;
-// }
-
+//SSD
 function reply_click(clicked_id) {
     if (clicked_id == 'storage-25Gb-btn') {
         const extraStorageText = document.getElementById("extra-storage-cost");
@@ -48,7 +46,7 @@ function reply_click(clicked_id) {
 
     }
 }
-
+//delivery
 function deliveryCharge(delivery, isAdd) {
     const deliveryChargeText = document.getElementById(delivery);
     let deliveryCharge = parseInt(deliveryChargeText.innerText);
@@ -64,67 +62,32 @@ function deliveryCharge(delivery, isAdd) {
 
 document.getElementById("memory-8gb-btn").addEventListener('click', function () {
 
-    const value = getMemory(false);
-
-
-    const bestPriceText = document.getElementById("best-price");
-    const bestPrice = parseInt(bestPriceText.innerText);
-
-    const totalPriceText = document.getElementById("total-price");
-    const totalPrice = parseInt(totalPriceText.innerText);
+    const memoryCountValue = getMemory(false);
     calculation();
 
-    // totalPriceText.innerText = value + bestPrice;
-    // console.log(totalPriceText);
 })
 
 document.getElementById("memory-16gb-btn").addEventListener('click', function () {
     // debugger;
-    const value1 = getMemory(true);
-    const totalPriceText = document.getElementById("total-price");
-    let totalPrice = parseInt(totalPriceText.innerText);
-
-
-    const bestPriceText = document.getElementById("best-price");
-    const bestPrice = parseInt(bestPriceText.innerText);
+    const memoryCountValue = getMemory(true);
     calculation();
 
-
-    // totalPriceText.innerText = value1 + bestPrice;
-    // console.log(totalPriceText);
 })
 
-//ssd
-
-// document.getElementById("storage-25Gb-btn").addEventListener('click', function () {
-//     const extraStorageText = document.getElementById('extra-storage-cost');
-//     const extraStorage = extraStorageText.innerText = 12;
-
-
-//     const bestPriceText = document.getElementById("best-price");
-//     const bestPrice = parseInt(bestPriceText.innerText);
-
-//     const totalPriceText = document.getElementById("total-price");
-//     const totalPrice = parseInt(totalPriceText.innerText);
-
-//     totalPriceText.innerText = extraStorage + bestPrice + getMemory();
-//     console.log(totalPriceText);
-
-// })
 
 //delivery
-document.getElementById("delivery-ontime").addEventListener('click', function () {
+document.getElementById("delivery-ontime-btn").addEventListener('click', function () {
     const isADDED = deliveryCharge("delivery-charge", false);
     calculation();
 })
-document.getElementById("delivery-early").addEventListener('click', function () {
+document.getElementById("delivery-early-btn").addEventListener('click', function () {
     const isADDED = deliveryCharge("delivery-charge", true);
     calculation();
 })
 
 //coupon code
 
-document.getElementById("apply-coupon").addEventListener('click', function () {
+document.getElementById("coupon-btn").addEventListener('click', function () {
 
     const couponInput = document.getElementById("coupon-code");
     const couponValue = couponInput.value;
