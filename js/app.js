@@ -130,7 +130,7 @@ document.getElementById("apply-coupon").addEventListener('click', function () {
     const couponValue = couponInput.value;
     console.log(discount);
 
-    if (couponValue.toLowerCase() == "abi") {
+    if (couponValue.toLowerCase() == "stevekaku") {
         let discountInput = document.getElementById("discount-price").innerText;
         document.getElementById("discount-price").innerText = discountInput - (discountInput * 0.2);
     }
